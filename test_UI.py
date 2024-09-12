@@ -6,7 +6,7 @@ from time import sleep
 import pytest
 from selenium import webdriver  # импорт драйвера для взаимодействия с браузером
 from selenium.webdriver.common.by import By
-
+import allure
 
 @pytest.fixture()
 def chrome():

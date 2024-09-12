@@ -1,4 +1,6 @@
 import requests
+import allure
+
 
 @allure.title("Поиск фильмов по 2024 году")
 @allure.description("Ввод названия фильма")
@@ -8,8 +10,10 @@ def test_movies_2024():
         "accept": "application/json",
         "X-API-KEY": "7YHG7QB-F4S4WCR-KFRAZSS-BCSP3AW"
     }
-    response = requests.get("https://api.kinopoisk.dev/v1.4/movie?page=1&limit=10&type=movie&year=2024", headers=HEADERS)
+    response = requests.get("https://api.kinopoisk.dev/v1.4/movie?page=1&limit=10&type=movie&year=2024",
+                            headers=HEADERS)
     assert response.status_code == 200
+
 
 @allure.title("Поиск фильмов по ID")
 @allure.description("Ввод ID")
@@ -31,7 +35,9 @@ def test_by_name():
         "accept": "application/json",
         "X-API-KEY": "7YHG7QB-F4S4WCR-KFRAZSS-BCSP3AW"
     }
-    response = requests.get("https://api.kinopoisk.dev/v1.4/movie/search?page=1&limit=10&query=%D0%9E%D1%81%D1%82%D1%80%D0%BE%D0%B2", headers=HEADERS)
+    response = requests.get(
+        "https://api.kinopoisk.dev/v1.4/movie/search?page=1&limit=10&query=%D0%9E%D1%81%D1%82%D1%80%D0%BE%D0%B2",
+        headers=HEADERS)
     assert response.status_code == 200
 
 
@@ -57,7 +63,3 @@ def test_by_reviews():
     }
     response = requests.get("https://api.kinopoisk.dev/v1.4/review?page=1&limit=10&movieId=397667", headers=HEADERS)
     assert response.status_code == 200
-
-
-
-
